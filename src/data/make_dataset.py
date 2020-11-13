@@ -3,7 +3,7 @@ import click
 import logging
 import json
 from pathlib import Path
-
+from all_symbols import all_symbols
 
 def read_scan_results(input_filepath, email_type):
 
@@ -104,7 +104,7 @@ def main(ham, spam, out):
 
     logger.info("Found " + str(len(unique_symbols)) + " unique symbols")
 
-    dataset = make_dataset(results, unique_symbols)
+    dataset = make_dataset(results, all_symbols)
 
     with open(out, 'w') as f:
         f.write(json.dumps(dataset))
